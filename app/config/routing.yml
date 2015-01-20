@@ -1,0 +1,12 @@
+home_app:
+    resource: "@TestHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+news_rest :
+  type : rest
+  resource : "@NewsRestBundle/Resources/config/routing.yml"
+  prefix : /api
+
+NelmioApiDocBundle:
+  resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+  prefix: /api/doc

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="News\RestBundle\Entity\Category" table="category" repository-class="News\RestBundle\Repository\CategoryRepository">
+    <unique-constraints>
+      <unique-constraint name="title_UNIQUE" columns="title"/>
+    </unique-constraints>
+    <id name="categoryId" type="integer" column="category_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="255" nullable="false"/>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="true"/>
+  </entity>
+</doctrine-mapping>

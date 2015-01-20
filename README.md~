@@ -74,6 +74,7 @@ php app/console doctrine:schema:create
 php app/console doctrine:fixtures:load
 ```
 
+
 ## III) Xem API Doc
 -------------------
 - Từ trình duyệt gõ http://api-news.local/api/doc để xem thông tin về các Api. Có thể get api result bằng sandbox trong api doc cũng được.

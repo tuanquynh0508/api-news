@@ -1,0 +1,5 @@
+api_rest:
+  resource: "@NewsRestBundle/Controller/ApiController.php"
+  type: rest
+  prefix: /v1
+  name_prefix: api_

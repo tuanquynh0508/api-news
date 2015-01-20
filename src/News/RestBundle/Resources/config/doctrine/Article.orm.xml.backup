@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="News\RestBundle\Entity\Article" table="article" repository-class="News\RestBundle\Repository\ArticleRepository">
+    <indexes>
+      <index name="fk_article_category_idx" columns="category_id"/>
+    </indexes>
+    <id name="articleId" type="bigint" column="article_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="255" nullable="false"/>
+    <field name="thumbnail" type="string" column="thumbnail" length="255" nullable="true"/>
+    <field name="sumary" type="text" column="sumary" length="65535" nullable="false"/>
+    <field name="content" type="text" column="content" nullable="false"/>
+    <field name="createdAt" type="datetime" column="created_at" nullable="true"/>
+    <field name="updatedAt" type="datetime" column="updated_at" nullable="true"/>
+    <many-to-one field="category" target-entity="Category">
+      <join-columns>
+        <join-column name="category_id" referenced-column-name="category_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

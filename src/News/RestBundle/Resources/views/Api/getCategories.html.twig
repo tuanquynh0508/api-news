@@ -1,0 +1,6 @@
+{% for category in list %}
+<h1>{{ category.title }}</h1>
+<hr/>
+{% else %}
+	<p>There are no category entries.</p>
+{% endfor %}

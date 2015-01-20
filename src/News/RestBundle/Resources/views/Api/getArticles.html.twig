@@ -1,0 +1,8 @@
+{% for article in list %}
+<h1>{{ article.title }}</h1>
+<h2>{{ article.sumary }}</h2>
+<p>{{ article.content }}</p>
+<hr/>
+{% else %}
+	<p>There are no article entries.</p>
+{% endfor %}
