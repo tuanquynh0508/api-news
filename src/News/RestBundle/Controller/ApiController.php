@@ -56,7 +56,7 @@ class ApiController extends FOSRestController
         $id = 0;
       }
 
-      $em = $this->getDoctrine()->getEntityManager();
+      $em = $this->getDoctrine()->getManager();
       $article = $em->getRepository('NewsRestBundle:Article')->getArticle($id);
 
       if (!$article) {
@@ -119,8 +119,8 @@ class ApiController extends FOSRestController
         $category_id = abs($category_id);
       }
 
-      $em = $this->getDoctrine()->getEntityManager();
-        $list = $em->getRepository('NewsRestBundle:Article')->getArticles($page, $limit, $category_id);
+      $em = $this->getDoctrine()->getManager();
+      $list = $em->getRepository('NewsRestBundle:Article')->getArticles($page, $limit, $category_id);
 
       if (!$list) {
         throw $this->createNotFoundException('No article found');
@@ -157,7 +157,7 @@ class ApiController extends FOSRestController
      */
     public function getCategoriesAction(Request $request)
     {
-      $em = $this->getDoctrine()->getEntityManager();
+      $em = $this->getDoctrine()->getManager();
       $list = $em->getRepository('NewsRestBundle:Category')->getCategories();
 
       if (!$list) {
