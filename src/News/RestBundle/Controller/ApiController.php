@@ -31,6 +31,7 @@ class ApiController extends FOSRestController
      *   resource = true,
      *   description = "Gets a Article for a given id",
      *   output = "News\RestBundle\Entity\Article",
+     *   section="Article",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *     404 = "Returned when the article is not found"
@@ -39,8 +40,7 @@ class ApiController extends FOSRestController
      *
      * @Annotations\View(
      *  template = "NewsRestBundle:Api:getArticle.html.twig",
-     *  statusCode = Codes::HTTP_BAD_REQUEST,
-     *  templateVar = "form"
+     *  templateVar = "article"
      * )
      *
      * @param Request $request the request object
@@ -60,7 +60,7 @@ class ApiController extends FOSRestController
       $article = $em->getRepository('NewsRestBundle:Article')->getArticle($id);
 
       if (!$article) {
-        throw $this->createNotFoundException('No article found for id '.$id);
+        throw $this->createNotFoundException('No article found');
       }
 
       return array(
@@ -78,6 +78,7 @@ class ApiController extends FOSRestController
      *
      * @ApiDoc(
      *   resource = true,
+     *   section="Article",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *     404 = "Returned when the article is not found"
@@ -86,8 +87,7 @@ class ApiController extends FOSRestController
      *
      * @Annotations\View(
      *  template = "NewsRestBundle:Api:getArticles.html.twig",
-     *  statusCode = Codes::HTTP_BAD_REQUEST,
-     *  templateVar = "form"
+     *  templateVar = "article"
      * )
      *
      * @param Request $request the request object
@@ -123,7 +123,7 @@ class ApiController extends FOSRestController
       $list = $em->getRepository('NewsRestBundle:Article')->getArticles($page, $limit, $category_id);
 
       if (!$list) {
-        throw $this->createNotFoundException('No article found');
+        throw $this->createNotFoundException('No articles found');
       }
 
       return array(
@@ -137,6 +137,7 @@ class ApiController extends FOSRestController
      *
      * @ApiDoc(
      *   resource = true,
+     *   section="Category",
      *   statusCodes = {
      *     200 = "Returned when successful",
      *     404 = "Returned when the article is not found"
@@ -145,8 +146,7 @@ class ApiController extends FOSRestController
      *
      * @Annotations\View(
      *  template = "NewsRestBundle:Api:getCategories.html.twig",
-     *  statusCode = Codes::HTTP_BAD_REQUEST,
-     *  templateVar = "form"
+     *  templateVar = "category"
      * )
      *
      * @param Request $request the request object
